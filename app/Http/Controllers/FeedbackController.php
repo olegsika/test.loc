@@ -13,6 +13,7 @@ class FeedbackController extends Controller
 
     public function __construct(IFeedbackRepository $feedbackRepository)
     {
+        $this->middleware('auth');
         $this->feedbackRepository = $feedbackRepository;
     }
 
@@ -24,7 +25,7 @@ class FeedbackController extends Controller
     public function index() {
         $feedbacks = $this->feedbackRepository->index();
 
-        return view('welcome', compact($feedbacks, 'feedbacks'));
+        return view('home', compact($feedbacks, 'feedbacks'));
 
     }
 }

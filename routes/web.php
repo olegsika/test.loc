@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'FeedbackController@index')->name('index');
+Route::get('/home', 'FeedbackController@index')->name('home');
 
 Route::post('/store', 'FeedbackController@store')->name('store');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

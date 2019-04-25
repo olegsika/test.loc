@@ -10,69 +10,83 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+            .full-height {
+                height: 100vh;
+            }
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+            .position-ref {
+                position: relative;
+            }
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+            .content {
+                text-align: center;
+            }
+            .title {
+                font-size: 84px;
+            }
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
     </head>
     <body>
-    <div class="container">
-            <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">Name:</label>
-                        <input name="name" type="text" class="form-control">
-                        @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input name="email" type="email" class="form-control">
-                        @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="site" class="col-form-label">Site:</label>
-                        <input name="site" type="text" class="form-control" >
-                        @error('site')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="file" class="col-form-label">File:</label>
-                        <input name="file" type="file" class="form-control" >
-                        @error('file')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </form>
-        <hr>
-        <table id="table" class="sortable table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Site</th>
-                    <th>File</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($feedbacks as $feedback)
-                    <tr>
-                        <td>{{$feedback->name}}</td>
-                        <td>{{$feedback->email}}</td>
-                        <td>{{$feedback->site}}</td>
-                        <td><img class="rounded-circle" src="{{ asset('/storage/'. $feedback->file) }}" width="50px" height="50pz"></td>
-                        <td>{{ $feedback->created_at }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+
+        <div class="content">
+            <div class="title m-b-md">
+                Laravel
+            </div>
+
+            <div class="links">
+                <a href="https://laravel.com/docs">Docs</a>
+                <a href="https://laracasts.com">Laracasts</a>
+                <a href="https://laravel-news.com">News</a>
+                <a href="https://blog.laravel.com">Blog</a>
+                <a href="https://nova.laravel.com">Nova</a>
+                <a href="https://forge.laravel.com">Forge</a>
+                <a href="https://github.com/laravel/laravel">GitHub</a>
+            </div>
+        </div>
     </div>
     </body>
     <script>
