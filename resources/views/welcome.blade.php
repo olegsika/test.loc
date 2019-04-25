@@ -36,6 +36,29 @@
                     <button type="submit" class="btn btn-primary">Send</button>
                 </div>
             </form>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Site</th>
+                    <th>File</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($feedbacks as $feedback)
+                    <tr>
+                        <td>{{$feedback->name}}</td>
+                        <td>{{$feedback->email}}</td>
+                        <td>{{$feedback->site}}</td>
+                        <td><img class="rounded-circle" src="{{ asset('/storage/'. $feedback->file) }}" width="50px" height="50pz"></td>
+                        <td>{{ $feedback->created_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     </body>
 </html>

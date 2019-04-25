@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'FeedbackController@index')->name('index');
+
 Route::post('/store', 'FeedbackController@store')->name('store');

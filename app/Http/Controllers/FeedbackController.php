@@ -20,4 +20,11 @@ class FeedbackController extends Controller
     {
         return $this->feedbackRepository->store($request);
     }
+
+    public function index() {
+        $feedbacks = $this->feedbackRepository->index();
+
+        return view('welcome', compact($feedbacks, 'feedbacks'));
+
+    }
 }

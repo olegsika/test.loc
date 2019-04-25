@@ -28,7 +28,7 @@ class FeedbackRepository implements IFeedbackRepository
 
     public function index()
     {
-
+        return Feedback::all();
     }
 
 }
