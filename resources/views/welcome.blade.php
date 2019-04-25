@@ -11,6 +11,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     </head>
     <body>
     <div class="container">
@@ -19,25 +20,38 @@
                     <div class="form-group">
                         <label for="name" class="col-form-label">Name:</label>
                         <input name="name" type="text" class="form-control">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-form-label">Email:</label>
                         <input name="email" type="email" class="form-control">
+                        @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="site" class="col-form-label">Site:</label>
                         <input name="site" type="text" class="form-control" >
+                        @error('site')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="file" class="col-form-label">File:</label>
                         <input name="file" type="file" class="form-control" >
+                        @error('file')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Send</button>
                 </div>
             </form>
         <hr>
-        <table class="table">
+        <table id="table" class="sortable table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -61,4 +75,6 @@
         </table>
     </div>
     </body>
+    <script>
+    </script>
 </html>
