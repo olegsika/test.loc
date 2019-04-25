@@ -39,6 +39,7 @@
             </div>
         </form>
         <hr>
+        <p>Количество сообщений: {{$feedbacks->count()}}</p>
         <table id="table" class="sortable table">
             <thead>
             <tr>
